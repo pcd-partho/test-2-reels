@@ -1,0 +1,6 @@
+requests
+pyyaml
+pillow
+numpy
+edge-tts
+gTTS

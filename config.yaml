@@ -1,0 +1,29 @@
+# ---- Auto Video Pipeline settings (edit on github.com, then commit) ----
+rotate_languages: [bn, hi, en]   # one language per run, rotating. Use [en] for English only.
+seconds_target: 45               # rough video length
+scenes: 5                        # number of scenes
+ai_label_text: "AI-assisted narration."   # added to the post caption
+# Free LLM providers are tried in this order. Model names change, so check
+# each provider's model list now and then and update the names below.
+llm:
+  gemini:
+    base: https://generativelanguage.googleapis.com/v1beta/openai
+    model: gemini-2.5-flash
+    key_env: GEMINI_API_KEY
+  groq:
+    base: https://api.groq.com/openai/v1
+    model: openai/gpt-oss-120b
+    key_env: GROQ_API_KEY
+  openrouter:
+    base: https://openrouter.ai/api/v1
+    model: meta-llama/llama-3.3-70b-instruct:free
+    key_env: OPENROUTER_API_KEY
+voices:                          # edge-tts voice names (try others: bn-BD-PradeepNeural, hi-IN-MadhurNeural, en-US-AndrewNeural)
+  bn: bn-BD-NabanitaNeural
+  hi: hi-IN-SwaraNeural
+  en: en-US-AndrewNeural
+voice_rate: {bn: "+8%", hi: "+10%", en: "+12%"}   # speaking speed. Higher = faster. Try +15% if it still sounds slow.
+voice_pitch: "+0Hz"
+fallback_speedup: 1.12           # gTTS and espeak-ng talk slowly, so they are sped up by this much
+gtts_lang: {bn: bn, hi: hi, en: en}
+espeak_lang: {bn: bn, hi: hi, en: en}
